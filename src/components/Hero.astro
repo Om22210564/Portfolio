@@ -1,0 +1,155 @@
+<section class="hero" aria-labelledby="hero-title">
+	<div class="container hero__inner">
+		<p class="eyebrow">01 / Portfolio · AI/ML Engineer · Software Developer</p>
+
+		<div class="hero__content">
+			<h1 id="hero-title">Omkar <span>Ambilwade.</span></h1>
+			<p class="hero__lead">
+				I build intelligent systems at the intersection of AI, machine learning and software engineering.
+			</p>
+			<p class="hero__supporting">
+				From applied models to reliable product infrastructure, I turn AI ideas into practical software.
+			</p>
+		</div>
+
+		<div class="hero__footer">
+			<div class="hero__actions">
+				<a class="hero__action hero__action--primary" href="#projects">View Projects <span aria-hidden="true">→</span></a>
+				<a class="hero__action" href="#contact">Contact Me</a>
+			</div>
+
+			<ul class="hero__socials" aria-label="Profile links">
+				<li><a href="https://github.com/Om22210564" target="_blank" rel="noreferrer">GitHub</a></li>
+				<li><a href="https://www.linkedin.com/in/omkar-ambilwade-0646a0257/" target="_blank" rel="noreferrer">LinkedIn</a></li>
+				<li><a href="https://leetcode.com/u/Om22210564/" target="_blank" rel="noreferrer">LeetCode</a></li>
+				<li><a href="mailto:omkarambilwade564@gmail.com">Email</a></li>
+			</ul>
+		</div>
+	</div>
+</section>
+
+<style>
+	.hero {
+		display: grid;
+		min-height: calc(100svh - 4.5rem);
+		padding-block: clamp(4rem, 9vw, 8rem) clamp(3rem, 5vw, 5rem);
+	}
+
+	.hero__inner {
+		display: grid;
+		align-content: space-between;
+		gap: clamp(4rem, 12vw, 9rem);
+	}
+
+	.hero__content {
+		display: grid;
+		gap: 1.5rem;
+	}
+
+	.hero h1 {
+		margin: 0;
+		font-size: clamp(4rem, 12vw, 9.5rem);
+		letter-spacing: -0.07em;
+	}
+
+	.hero h1 span {
+		display: block;
+		color: var(--text-secondary);
+	}
+
+	.hero__lead {
+		max-width: 34ch;
+		color: var(--text-primary);
+		font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+		line-height: 1.25;
+		text-wrap: balance;
+	}
+
+	.hero__supporting {
+		max-width: 60ch;
+	}
+
+	.hero__footer,
+	.hero__actions,
+	.hero__socials {
+		display: flex;
+		align-items: center;
+	}
+
+	.hero__footer {
+		justify-content: space-between;
+		gap: 2rem;
+		padding-top: 1.5rem;
+		border-top: 1px solid var(--border);
+	}
+
+	.hero__actions,
+	.hero__socials {
+		flex-wrap: wrap;
+		gap: 0.75rem;
+	}
+
+	.hero__action {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		min-height: 2.75rem;
+		padding-inline: 1rem;
+		border: 1px solid var(--border);
+		border-radius: 0.5rem;
+		font-family: var(--font-mono);
+		font-size: 0.75rem;
+		text-decoration: none;
+	}
+
+	.hero__action--primary {
+		border-color: var(--text-primary);
+		background: var(--text-primary);
+		color: var(--background);
+	}
+
+	.hero__action--primary:hover {
+		background: var(--background);
+		color: var(--text-primary);
+	}
+
+	.hero__action span {
+		transition: transform 180ms ease;
+	}
+
+	.hero__action:hover span {
+		transform: translateX(0.2rem);
+	}
+
+	.hero__socials {
+		justify-content: flex-end;
+		padding: 0;
+		list-style: none;
+	}
+
+	.hero__socials a {
+		color: var(--text-muted);
+		font-family: var(--font-mono);
+		font-size: 0.75rem;
+		text-decoration: none;
+	}
+
+	.hero__socials a:hover {
+		color: var(--text-primary);
+	}
+
+	@media (max-width: 620px) {
+		.hero {
+			min-height: calc(100svh - 7.75rem);
+		}
+
+		.hero__footer {
+			align-items: flex-start;
+			flex-direction: column;
+		}
+
+		.hero__socials {
+			justify-content: flex-start;
+		}
+	}
+</style>

@@ -1,0 +1,24 @@
+<section id="contact" class="contact" aria-labelledby="contact-title">
+	<div class="container contact__inner">
+		<p class="eyebrow">06 / Contact</p>
+		<h2 id="contact-title">Let’s build <span>something useful.</span></h2>
+		<p class="contact__lead">I’m interested in opportunities involving AI, machine learning and software engineering.</p>
+		<ul class="contact__links" aria-label="Profile links">
+			<li><a href="https://github.com/Om22210564" target="_blank" rel="noreferrer">GitHub</a></li>
+			<li><a href="https://www.linkedin.com/in/omkar-ambilwade-0646a0257/" target="_blank" rel="noreferrer">LinkedIn</a></li>
+			<li><a href="https://leetcode.com/u/Om22210564/" target="_blank" rel="noreferrer">LeetCode</a></li>
+			<li><a href="mailto:om26012025@gmail.com">Email</a></li>
+		</ul>
+	</div>
+</section>
+
+<style>
+	.contact { padding-block: clamp(6rem, 14vw, 11rem); }
+	.contact__inner { display: grid; gap: 1.5rem; }
+	.contact h2 { margin: 0; max-width: 10ch; font-size: clamp(3.2rem, 9vw, 7.5rem); letter-spacing: -0.065em; }
+	.contact h2 span { display: block; color: var(--text-secondary); }
+	.contact__lead { max-width: 38ch; font-size: clamp(1.1rem, 2vw, 1.4rem); }
+	.contact__links { display: flex; flex-wrap: wrap; gap: 1.25rem; margin: 1rem 0 0; padding: 0; list-style: none; }
+	.contact__links a { color: var(--text-muted); font-family: var(--font-mono); font-size: 0.75rem; text-decoration: none; }
+	.contact__links a:hover { color: var(--text-primary); }
+</style>

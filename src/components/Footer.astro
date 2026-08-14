@@ -1,0 +1,16 @@
+<footer class="footer">
+	<div class="container footer__inner">
+		<p>© 2026 Omkar Ambilwade <span aria-hidden="true">·</span> Built with Astro.</p>
+		<a href="#">Back to top <span aria-hidden="true">↑</span></a>
+	</div>
+</footer>
+
+<style>
+	.footer { border-top: 1px solid var(--border); }
+	.footer__inner { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; padding-block: 1.5rem; }
+	.footer p, .footer a { color: var(--text-muted); font-family: var(--font-mono); font-size: 0.72rem; }
+	.footer p { margin: 0; }
+	.footer a { text-decoration: none; white-space: nowrap; }
+	.footer a:hover { color: var(--text-primary); }
+	@media (max-width: 480px) { .footer__inner { align-items: flex-start; flex-direction: column; gap: 0.75rem; } }
+</style>

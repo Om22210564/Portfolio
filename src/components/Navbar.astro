@@ -1,0 +1,79 @@
+<header class="site-header">
+	<div class="container site-header__inner">
+		<a class="site-header__brand" href="/" aria-label="Omkar Ambilwade home">
+			OA.
+		</a>
+
+		<nav aria-label="Primary navigation">
+			<ul class="site-header__links">
+				<li><a href="#about">About</a></li>
+				<li><a href="#experience">Experience</a></li>
+				<li><a href="#projects">Projects</a></li>
+				<li><a href="#skills">Skills</a></li>
+				<li><a href="#contact">Contact</a></li>
+			</ul>
+		</nav>
+	</div>
+</header>
+
+<style>
+	.site-header {
+		position: sticky;
+		top: 0;
+		z-index: 10;
+		border-bottom: 1px solid var(--border);
+		background: color-mix(in srgb, var(--background) 88%, transparent);
+		backdrop-filter: blur(12px);
+	}
+
+	.site-header__inner {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1.5rem;
+		min-height: 4.5rem;
+	}
+
+	.site-header__brand {
+		font-family: var(--font-mono);
+		font-size: 1rem;
+		font-weight: 700;
+		letter-spacing: -0.08em;
+		text-decoration: none;
+	}
+
+	.site-header__links {
+		display: flex;
+		align-items: center;
+		gap: clamp(0.875rem, 2vw, 1.5rem);
+		padding: 0;
+		list-style: none;
+	}
+
+	.site-header__links a {
+		color: var(--text-secondary);
+		font-family: var(--font-mono);
+		font-size: 0.75rem;
+		letter-spacing: 0.02em;
+		text-decoration: none;
+	}
+
+	.site-header__links a:hover {
+		color: var(--text-primary);
+	}
+
+	@media (max-width: 620px) {
+		.site-header__inner {
+			align-items: flex-start;
+			flex-direction: column;
+			gap: 0.7rem;
+			padding-block: 0.85rem;
+		}
+
+		.site-header__links {
+			width: 100%;
+			justify-content: space-between;
+			gap: 0.5rem;
+		}
+	}
+</style>

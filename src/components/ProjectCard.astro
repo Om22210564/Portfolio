@@ -1,0 +1,199 @@
+---
+import type { Project } from '../data/projects';
+
+interface Props {
+	project: Project;
+	featured?: boolean;
+}
+
+const { project, featured = false } = Astro.props;
+const videoSrc = project.video ? `${import.meta.env.BASE_URL}${project.video}` : undefined;
+---
+
+<article class:list={['project-card', { 'project-card--featured': featured }]}>
+	<div class="project-card__topline">
+		<p class="project-card__number">{project.number}</p>
+		{project.github && (
+			<a
+				class="project-card__source"
+				href={project.github}
+				target="_blank"
+				rel="noreferrer"
+				aria-label={`View ${project.title} source on GitHub (opens in a new tab)`}
+			>
+				GitHub <span aria-hidden="true">↗</span>
+			</a>
+		)}
+	</div>
+
+	<div class:list={['project-card__body', { 'project-card__body--with-video': videoSrc }]}>
+		{videoSrc && (
+			<video class="project-card__video" controls playsinline preload="metadata" aria-label={`${project.title} demo video`}>
+				<source src={videoSrc} type="video/webm" />
+				Your browser does not support embedded video. Please use the GitHub link to view the project.
+			</video>
+		)}
+
+		<div class="project-card__content">
+			<div>
+				{project.subtitle && <p class="project-card__subtitle">{project.subtitle}</p>}
+				<h3>{project.title}</h3>
+			</div>
+			<p class="project-card__description">{project.description}</p>
+			{project.highlights && (
+				<ul class="project-card__highlights">
+					{project.highlights.map((highlight) => <li>{highlight}</li>)}
+				</ul>
+			)}
+		</div>
+	</div>
+
+	<ul class="project-card__technologies" aria-label={`${project.title} technologies`}>
+		{project.technologies.map((technology) => <li>{technology}</li>)}
+	</ul>
+</article>
+
+<style>
+	.project-card {
+		display: flex;
+		flex-direction: column;
+		align-items: stretch;
+		gap: 2rem;
+		padding: clamp(1.5rem, 3vw, 2.5rem);
+		border: 1px solid var(--border);
+		border-radius: 0.5rem;
+		background: var(--surface);
+		transition: border-color 180ms ease, background-color 180ms ease;
+	}
+
+	.project-card:hover {
+		border-color: var(--border-hover);
+		background: var(--surface-secondary);
+	}
+
+	.project-card--featured {
+		grid-column: 1 / -1;
+	}
+
+	.project-card__body {
+		display: grid;
+		gap: 1.25rem;
+	}
+
+	.project-card__body--with-video {
+		grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+		gap: clamp(1.5rem, 4vw, 3.5rem);
+		align-items: start;
+	}
+
+	.project-card__topline,
+	.project-card__content,
+	.project-card__technologies,
+	.project-card__highlights {
+		display: flex;
+	}
+
+	.project-card__topline {
+		align-items: center;
+		justify-content: space-between;
+		gap: 1rem;
+	}
+
+	.project-card__number,
+	.project-card__subtitle,
+	.project-card__source {
+		font-family: var(--font-mono);
+		font-size: 0.72rem;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+	}
+
+	.project-card__number,
+	.project-card__subtitle {
+		color: var(--text-muted);
+	}
+
+	.project-card__source {
+		display: inline-flex;
+		gap: 0.35rem;
+		color: var(--text-secondary);
+		text-decoration: none;
+	}
+
+	.project-card__source span {
+		transition: transform 180ms ease;
+	}
+
+	.project-card__source:hover span {
+		transform: translate(0.15rem, -0.15rem);
+	}
+
+	.project-card__content {
+		flex-direction: column;
+		gap: 1.25rem;
+	}
+
+	.project-card h3 {
+		margin: 0.45rem 0 0;
+		font-size: clamp(1.6rem, 3vw, 2.5rem);
+	}
+
+	.project-card__description {
+		max-width: 62ch;
+	}
+
+	.project-card__highlights {
+		flex-direction: column;
+		gap: 0.55rem;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.project-card__highlights li {
+		padding-left: 1rem;
+		color: var(--text-secondary);
+		font-size: 0.9rem;
+	}
+
+	.project-card__highlights li::before {
+		margin-left: -1rem;
+		color: var(--text-muted);
+		content: '— ';
+	}
+
+	.project-card__technologies {
+		flex-wrap: wrap;
+		align-items: flex-end;
+		gap: 0.45rem;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.project-card__technologies li {
+		padding: 0.35rem 0.5rem;
+		border: 1px solid var(--border);
+		border-radius: 0.35rem;
+		color: var(--text-muted);
+		font-family: var(--font-mono);
+		font-size: 0.67rem;
+		line-height: 1.2;
+	}
+
+	.project-card__video {
+		width: 100%;
+		align-self: stretch;
+		aspect-ratio: 16 / 9;
+		border: 1px solid var(--border);
+		border-radius: 0.4rem;
+		background: #000;
+		object-fit: contain;
+	}
+
+	@media (max-width: 720px) {
+		.project-card__body--with-video {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

@@ -1,0 +1,30 @@
+---
+import { projects } from '../data/projects';
+import ProjectCard from './ProjectCard.astro';
+import SectionHeading from './SectionHeading.astro';
+---
+
+<section id="projects" class="section projects" aria-label="Selected projects">
+	<div class="container">
+		<SectionHeading number="03" title="Selected Work" subtitle="AI systems, developer tooling, and applied machine learning." />
+
+		<div class="projects__grid">
+			{projects.map((project, index) => <ProjectCard project={project} featured={index === 0} />)}
+		</div>
+	</div>
+</section>
+
+<style>
+	.projects__grid {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 1rem;
+		margin-top: clamp(2rem, 5vw, 4rem);
+	}
+
+	@media (max-width: 720px) {
+		.projects__grid {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

@@ -1,6 +1,10 @@
+---
+const homeHref = import.meta.env.BASE_URL;
+---
+
 <header class="site-header">
 	<div class="container site-header__inner">
-		<a class="site-header__brand" href="/" aria-label="Omkar Ambilwade home">
+		<a class="site-header__brand" href={homeHref} aria-label="Omkar Ambilwade home">
 			OA.
 		</a>
 

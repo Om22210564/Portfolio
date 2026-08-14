@@ -126,6 +126,22 @@ a:hover {
 	outline-offset: 4px;
 }
 
+.skip-link {
+	position: fixed;
+	top: 1rem;
+	left: 1rem;
+	z-index: 100;
+	padding: 0.6rem 0.8rem;
+	background: var(--text-primary);
+	color: var(--background);
+	font-family: var(--font-mono);
+	font-size: 0.75rem;
+	text-decoration: none;
+	transform: translateY(-200%);
+}
+
+.skip-link:focus { transform: translateY(0); }
+
 /* Layout primitives */
 .container {
 	width: min(100% - (var(--page-gutter) * 2), var(--container-width));

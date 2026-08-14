@@ -8,8 +8,10 @@ interface Props {
 
 const {
 	title = 'Omkar Ambilwade — AI/ML Engineer',
-	description = 'Portfolio of Omkar Ambilwade, an AI/ML engineer and software developer.',
+	description = 'Portfolio of Omkar Ambilwade, an AI/ML engineer and software developer building intelligent systems, machine learning applications and AI-powered products.',
 } = Astro.props;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin);
+const baseURL = import.meta.env.BASE_URL;
 ---
 
 <!doctype html>
@@ -19,13 +21,20 @@ const {
 		<meta name="viewport" content="width=device-width" />
 		<meta name="description" content={description} />
 		<meta name="theme-color" content="#0a0a0a" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
+		<link rel="canonical" href={canonicalURL} />
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:url" content={canonicalURL} />
+		<meta name="twitter:card" content="summary" />
+		<link rel="icon" type="image/svg+xml" href={`${baseURL}favicon.svg`} />
+		<link rel="icon" href={`${baseURL}favicon.ico`} />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
 	<body>
-		<main>
+		<a class="skip-link" href="#main-content">Skip to content</a>
+		<main id="main-content">
 			<slot />
 		</main>
 		<script>

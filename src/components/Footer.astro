@@ -1,7 +1,11 @@
+---
+const homeHref = import.meta.env.BASE_URL;
+---
+
 <footer class="footer">
 	<div class="container footer__inner">
 		<p>© 2026 Omkar Ambilwade <span aria-hidden="true">·</span> Built with Astro.</p>
-		<a href="#">Back to top <span aria-hidden="true">↑</span></a>
+		<a href={homeHref}>Back to top <span aria-hidden="true">↑</span></a>
 	</div>
 </footer>
 

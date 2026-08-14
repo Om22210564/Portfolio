@@ -1,46 +1,58 @@
-# Astro Starter Kit: Basics
+# Portfolio
 
-```sh
-npm create astro@latest -- --template basics
+My Portfolio 
+
+Live site: [om22210564.github.io/Portfolio](https://om22210564.github.io/Portfolio/)
+
+## Tech stack
+
+- [Astro](https://astro.build/) with TypeScript
+- Static HTML and CSS
+- Minimal client-side JavaScript for progressive section reveals
+- GitHub Pages with GitHub Actions
+
+## Local development
+
+Requirements: Node.js 22.12 or later and npm.
+
+```bash
+npm install
+npm run dev
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+The development server is available at `http://localhost:4321/Portfolio/` because the production GitHub Pages base path is configured in `astro.config.mjs`.
 
-## 🚀 Project Structure
+## Commands
 
-Inside of your Astro project, you'll see the following folders and files:
+```bash
+# Create the production build in dist/
+npm run build
+
+# Serve the production build locally
+npm run preview
+
+# Run Astro CLI commands
+npm run astro -- --help
+```
+
+## Project structure
 
 ```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
+src/
+├── components/   # Reusable Astro sections and UI components
+├── data/         # Typed project, experience, and skills data
+├── layouts/      # Shared document layout and metadata
+├── pages/        # Site routes and sitemap endpoint
+└── styles/       # Global design system
+public/           # Favicons, robots.txt, and static video assets
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+## Deployment
 
-## 🧞 Commands
+The portfolio deploys to GitHub Pages at `https://om22210564.github.io/Portfolio/`.
 
-All commands are run from the root of the project, from a terminal:
+1. In GitHub, open **Settings → Pages** and select **GitHub Actions** as the publishing source.
+2. Push to the `main` branch.
+3. The [deployment workflow](.github/workflows/deploy.yml) builds the site and publishes the generated artifact.
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+The `site` and `base` configuration in `astro.config.mjs` must match the GitHub username and repository name. Update both values if the repository is renamed or moved to another account.

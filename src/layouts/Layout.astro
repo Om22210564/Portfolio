@@ -28,5 +28,26 @@ const {
 		<main>
 			<slot />
 		</main>
+		<script>
+			const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+			const revealTargets = document.querySelectorAll<HTMLElement>('[data-reveal]');
+
+			if (!reducedMotion && 'IntersectionObserver' in window && revealTargets.length) {
+				document.documentElement.classList.add('has-scroll-reveal');
+				const observer = new IntersectionObserver(
+					(entries) => {
+						for (const entry of entries) {
+							if (entry.isIntersecting) {
+								entry.target.classList.add('is-revealed');
+								observer.unobserve(entry.target);
+							}
+						}
+					},
+					{ threshold: 0.1 },
+				);
+
+				revealTargets.forEach((target) => observer.observe(target));
+			}
+		</script>
 	</body>
 </html>

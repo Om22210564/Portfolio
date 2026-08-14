@@ -137,6 +137,17 @@ a:hover {
 	border-top: 1px solid var(--border);
 }
 
+.has-scroll-reveal [data-reveal] {
+	opacity: 0;
+	transform: translateY(0.9rem);
+	transition: opacity 320ms ease, transform 320ms ease;
+}
+
+.has-scroll-reveal [data-reveal].is-revealed {
+	opacity: 1;
+	transform: translateY(0);
+}
+
 .eyebrow,
 .meta {
 	color: var(--text-muted);

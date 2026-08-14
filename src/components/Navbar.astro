@@ -51,6 +51,7 @@
 	}
 
 	.site-header__links a {
+		position: relative;
 		color: var(--text-secondary);
 		font-family: var(--font-mono);
 		font-size: 0.75rem;
@@ -58,8 +59,28 @@
 		text-decoration: none;
 	}
 
-	.site-header__links a:hover {
+	.site-header__links a::after {
+		position: absolute;
+		right: 0;
+		bottom: -0.45rem;
+		left: 0;
+		height: 1px;
+		background: currentColor;
+		content: '';
+		transform: scaleX(0);
+		transform-origin: right;
+		transition: transform 180ms ease;
+	}
+
+	.site-header__links a:hover,
+	.site-header__links a:focus-visible {
 		color: var(--text-primary);
+	}
+
+	.site-header__links a:hover::after,
+	.site-header__links a:focus-visible::after {
+		transform: scaleX(1);
+		transform-origin: left;
 	}
 
 	@media (max-width: 620px) {

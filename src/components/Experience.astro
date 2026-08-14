@@ -1,0 +1,149 @@
+---
+import { experience } from '../data/experience';
+import SectionHeading from './SectionHeading.astro';
+---
+
+<section id="experience" class="section experience" aria-label="Experience">
+	<div class="container experience__layout">
+		<div class="experience__heading">
+			<SectionHeading number="02" title="Experience" />
+		</div>
+
+		<div class="experience__list">
+			{experience.map((item) => (
+				<article class="experience__item">
+					<header class="experience__item-header">
+						<div>
+							<p class="experience__company">{item.company}</p>
+							{item.team && <p class="experience__team">{item.team}</p>}
+							<h3>{item.role}</h3>
+						</div>
+						<div class="experience__metadata">
+							<p>{item.period}</p>
+							<p>{item.location}</p>
+						</div>
+					</header>
+
+					<ul class="experience__highlights">
+						{item.highlights.map((highlight) => <li>{highlight}</li>)}
+					</ul>
+
+					<ul class="experience__technologies" aria-label={`${item.company} technologies`}>
+						{item.technologies.map((technology) => <li>{technology}</li>)}
+					</ul>
+				</article>
+			))}
+		</div>
+	</div>
+</section>
+
+<style>
+	.experience__layout {
+		display: grid;
+		grid-template-columns: minmax(14rem, 0.43fr) 1fr;
+		gap: clamp(3rem, 8vw, 8rem);
+	}
+
+	.experience__list {
+		border-top: 1px solid var(--border);
+	}
+
+	.experience__item {
+		padding-block: clamp(2rem, 4vw, 3.25rem);
+		border-bottom: 1px solid var(--border);
+	}
+
+	.experience__item-header {
+		display: flex;
+		justify-content: space-between;
+		gap: 2rem;
+	}
+
+	.experience__company,
+	.experience__team,
+	.experience__metadata p {
+		font-family: var(--font-mono);
+		font-size: 0.75rem;
+		line-height: 1.5;
+	}
+
+	.experience__company {
+		color: var(--text-primary);
+	}
+
+	.experience__team,
+	.experience__metadata p {
+		color: var(--text-muted);
+	}
+
+	.experience__item h3 {
+		margin-top: 0.65rem;
+		font-size: clamp(1.35rem, 2.5vw, 1.8rem);
+	}
+
+	.experience__metadata {
+		display: grid;
+		align-content: start;
+		gap: 0.25rem;
+		min-width: 11rem;
+		text-align: right;
+	}
+
+	.experience__highlights {
+		display: grid;
+		gap: 0.75rem;
+		margin: 1.75rem 0 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.experience__highlights li {
+		position: relative;
+		max-width: 70ch;
+		padding-left: 1.1rem;
+	}
+
+	.experience__highlights li::before {
+		position: absolute;
+		left: 0;
+		color: var(--text-muted);
+		content: '—';
+	}
+
+	.experience__technologies {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		margin: 1.75rem 0 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.experience__technologies li {
+		padding: 0.35rem 0.55rem;
+		border: 1px solid var(--border);
+		border-radius: 0.4rem;
+		color: var(--text-muted);
+		font-family: var(--font-mono);
+		font-size: 0.68rem;
+		line-height: 1.2;
+	}
+
+	@media (max-width: 800px) {
+		.experience__layout {
+			grid-template-columns: 1fr;
+		}
+	}
+
+	@media (max-width: 560px) {
+		.experience__item-header {
+			flex-direction: column;
+			gap: 1rem;
+		}
+
+		.experience__metadata {
+			min-width: 0;
+			text-align: left;
+		}
+	}
+</style>

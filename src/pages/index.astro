@@ -1,10 +1,16 @@
 ---
 import Hero from '../components/Hero.astro';
 import Navbar from '../components/Navbar.astro';
+import SectionHeading from '../components/SectionHeading.astro';
 import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout>
 	<Navbar />
 	<Hero />
+	<section id="about" class="section">
+		<div class="container">
+			<SectionHeading number="01" title="About" subtitle="Engineering profile" />
+		</div>
+	</section>
 </Layout>

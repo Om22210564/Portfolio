@@ -1,0 +1,31 @@
+---
+import SectionHeading from './SectionHeading.astro';
+---
+
+<section class="section achievements" aria-label="Achievements and open source">
+	<div class="container achievements__layout">
+		<div><SectionHeading number="05" title="Recognition" subtitle="Achievements and open-source contributions." /></div>
+		<div class="achievements__content">
+			<article class="achievements__item">
+				<p class="meta">Achievement</p>
+				<h3>Smart India Hackathon 2024 — Finalist</h3>
+			</article>
+			<article class="achievements__item">
+				<p class="meta">Open Source / A2UI</p>
+				<h3>Updated documentation and onboarding materials to support both v0.8 and v0.9.</h3>
+			</article>
+			<article class="achievements__item">
+				<p class="meta">Open Source / Lichess</p>
+				<h3>Documentation contribution updating references to the actively maintained mobile repository.</h3>
+			</article>
+		</div>
+	</div>
+</section>
+
+<style>
+	.achievements__layout { display: grid; grid-template-columns: minmax(14rem, 0.43fr) 1fr; gap: clamp(3rem, 8vw, 8rem); }
+	.achievements__content { border-top: 1px solid var(--border); }
+	.achievements__item { display: grid; gap: 0.75rem; padding-block: clamp(1.5rem, 3vw, 2.25rem); border-bottom: 1px solid var(--border); }
+	.achievements__item h3 { margin: 0; max-width: 36ch; font-size: clamp(1.25rem, 2.2vw, 1.6rem); line-height: 1.2; }
+	@media (max-width: 800px) { .achievements__layout { grid-template-columns: 1fr; } }
+</style>
